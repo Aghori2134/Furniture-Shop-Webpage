@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeHome | Premium Furniture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #faf8f4;
+            color: #302b25;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #f5efe5;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: loaderOut 0.7s ease 2s forwards;
+        }
+
+        .loader-ring {
+            width: 48px;
+            height: 48px;
+            border: 3px solid #ded3c2;
+            border-top-color: #776347;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loaderOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .nav-link {
+            transition: background 0.35s ease,
+                        color 0.35s ease,
+                        padding-left 0.35s ease;
+        }
+
+        .nav-link:hover {
+            background: #eae2d6;
+            color: #6c573a;
+            padding-left: 25px;
+        }
+
+        .nav-link.active {
+            background: #eae2d6;
+            color: #6c573a;
+        }
+        .hero-copy {
+            animation: heroEnter 1s ease both;
+        }
+
+        @keyframes heroEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reveal {
+            animation: revealUp linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 28%;
+        }
+
+        @keyframes revealUp {
+            from {
+                opacity: 0;
+                transform: translateY(45px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-image {
+            animation: imageZoom linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+
+        @keyframes imageZoom {
+            from {
+                transform: scale(0.92);
+                opacity: 0.65;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .product-card {
+            transition: transform 0.35s ease,
+                        box-shadow 0.35s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 35px #5a48351a;
+        }
+
+        .product-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .product-image {
+            overflow: hidden;
+        }
+
+        .gold-button {
+            transition: background 0.3s ease,
+                        transform 0.3s ease;
+        }
+
+        .gold-button:hover {
+            background: #493b29;
+            transform: translateY(-2px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader">
+        <div class="text-center">
+            <div class="loader-ring mx-auto mb-5"></div>
+            <h2 class="serif text-3xl tracking-wide">LuxeHome</h2>
+            <p class="text-xs tracking-[5px] mt-2 text-stone-500">
+                PREMIUM LIVING
+            </p>
+        </div>
+    </div>
+    <aside class="fixed left-0 top-0 z-40 hidden h-screen w-60 border-r border-stone-200 bg-[#f7f4ee] px-5 py-8 md:flex md:flex-col">
+
+        <a href="#home" class="mb-12 block text-center">
+            <span class="serif text-3xl">LuxeHome</span>
+            <span class="mt-1 block text-[9px] tracking-[4px] text-stone-500">
+                PREMIUM FURNITURE
+            </span>
+        </a>
+
+        <p class="mb-4 px-3 text-[10px] font-semibold tracking-[3px] text-stone-400">
+            MAIN MENU
+        </p>
+
+        <nav class="space-y-2">
+            <a href="#home" class="nav-link flex rounded-xl px-4 py-3 text-sm">
+                <span class="mr-3"><i class="ri-home-line"></i></span> Home
+            </a>
+
+            <a href="#categories" class="nav-link flex rounded-xl px-4 py-3 text-sm">
+                <span class="mr-3"><i class="ri-keyboard-box-line"></i></span> Living Room
+                <span class="ml-auto">›</span>
+            </a>
+
+            <a href="#bedroom" class="nav-link flex rounded-xl px-4 py-3 text-sm">
+                <span class="mr-3"><i class="ri-hotel-bed-line"></i></span> Bedroom
+                <span class="ml-auto">›</span>
+            </a>
+
+            <a href="#products" class="nav-link flex rounded-xl px-4 py-3 text-sm">
+                <span class="mr-3"><i class="ri-restaurant-fill"></i></span> Dining
+                <span class="ml-auto">›</span>
+            </a>
+
+            <a href="#collections" class="nav-link flex rounded-xl px-4 py-3 text-sm">
+                <span class="mr-3"><i class="ri-star-line"></i></span> Collections
+            </a>
+
+            <a href="#about" class="nav-link flex rounded-xl px-4 py-3 text-sm">
+                <span class="mr-3"><i class="ri-file-info-fill"></i></span> About Us
+            </a>
+        </nav>
+
+        <div class="mt-auto rounded-2xl bg-[#e9e0d3] p-4">
+            <div class="mb-3 h-32 overflow-hidden rounded-xl">
+                <img
+                    src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=500&q=85"
+                    class="h-full w-full object-cover"
+                    alt="Elegant lounge chair">
+            </div>
+
+            <h3 class="serif text-xl">Better Spaces</h3>
+            <h3 class="serif text-xl">Happier Living.</h3>
+
+            <a href="#products" class="mt-3 inline-block text-xs underline underline-offset-4">
+                Explore collection →
+            </a>
+        </div>
+
+        <p class="mt-7 text-center text-[10px] text-stone-400">
+            © 2026 LuxeHome Studio
+        </p>
+    </aside>
+    <main class="md:ml-60">
+        <header class="sticky top-0 z-30 flex items-center justify-between border-b border-stone-200/70 bg-[#faf8f4]/90 px-5 py-4 backdrop-blur-xl md:px-10">
+
+            <a href="#home" class="serif text-2xl md:hidden">LuxeHome</a>
+
+            <div class="hidden w-72 items-center rounded-full bg-[#f0ece5] px-4 py-3 sm:flex">
+                <span class="mr-3"><i class="ri-search-line"></i></span>
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="Search furniture..."
+                    class="w-full bg-transparent text-sm outline-none">
+            </div>
+
+            <div class="ml-auto flex items-center gap-5 text-[18px]">
+                <a href="#products" aria-label="Favorites"><i class="ri-heart-line"></i></a>
+                <a href="#about" aria-label="Account"><i class="ri-shopping-cart-2-fill"></i></a>
+            </div>
+        </header>
+        <section id="home" class="relative flex min-h-[580px] items-center overflow-hidden bg-[#eee4d7] md:min-h-[620px]">
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8RvI18PIlkKtulz7Z5bcrOD8kCvY4uXi-cPcx4p3gFg&s=10"
+                alt="Luxury modern living room"
+                class="absolute inset-0 h-full w-full object-cover object-center">
+
+            <div class="absolute inset-0 bg-gradient-to-r from-[#f3eadf] via-[#f3eadf]/95 to-[#f3eadf]/10"></div>
+
+            <div class="hero-copy relative z-10 max-w-xl px-7 py-16 md:px-14 lg:px-16">
+
+                <p class="mb-6 text-xs font-semibold tracking-[4px] text-[#806b4e]">
+                    DESIGNED FOR BETTER LIVING
+                </p>
+
+                <h1 class="serif text-5xl leading-tight md:text-7xl">
+                    Furniture that
+                    <span class="italic text-[#8a7557]">feels</span>
+                    like home.
+                </h1>
+
+                <p class="mt-6 max-w-md text-sm leading-7 text-stone-600 md:text-base">
+                    Discover thoughtful designs, natural materials and timeless pieces made to make every corner special.
+                </p>
+
+                <div class="mt-9 flex flex-wrap items-center gap-5">
+                    <a href="#products" class="gold-button rounded-full bg-[#705b3d] px-8 py-4 text-sm text-white">
+                        Shop Collection →
+                    </a>
+
+                    <a href="#about" class="text-sm underline underline-offset-8">
+                        Our Story
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="grid grid-cols-2 gap-5 border-b border-stone-200 bg-white px-6 py-7 md:grid-cols-4 md:px-10">
+
+            <div class="reveal flex items-center gap-3">
+                <div>
+                    <h3 class="text-sm font-semibold">Premium Quality</h3>
+                    <p class="mt-1 text-xs text-stone-500">Made with care</p>
+                </div>
+            </div>
+
+            <div class="reveal flex items-center gap-3">
+                <div>
+                    <h3 class="text-sm font-semibold">Natural Materials</h3>
+                    <p class="mt-1 text-xs text-stone-500">Beautifully sourced</p>
+                </div>
+            </div>
+
+            <div class="reveal flex items-center gap-3">
+                <div>
+                    <h3 class="text-sm font-semibold">Thoughtful Design</h3>
+                    <p class="mt-1 text-xs text-stone-500">Made for everyday</p>
+                </div>
+            </div>
+
+            <div class="reveal flex items-center gap-3">
+                <div>
+                    <h3 class="text-sm font-semibold">Customer Care</h3>
+                    <p class="mt-1 text-xs text-stone-500">Here to help you</p>
+                </div>
+            </div>
+        </section>
+        <section id="categories" class="px-6 py-20 md:px-10 lg:px-14">
+
+            <div class="reveal mb-9 flex items-end justify-between">
+                <div>
+                    <p class="mb-3 text-xs tracking-[3px] text-stone-500">FIND YOUR STYLE</p>
+                    <h2 class="serif text-3xl md:text-4xl">Shop by category</h2>
+                </div>
+
+                <a href="#products" class="hidden text-sm underline underline-offset-8 sm:block">
+                    View all →
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+
+                <a href="#products" class="reveal group text-center">
+                    <div class="scroll-image overflow-hidden rounded-2xl bg-[#eee8df]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDIrZarLo_f7iUHj3NCmDgPVufrLw9xg8Jrju7kTGvmQ&s=10"
+                             alt="Sofa" class="h-36 w-full object-cover transition duration-500 group-hover:scale-110 md:h-40">
+                    </div>
+                    <h3 class="mt-4 text-sm font-medium">Sofas</h3>
+                    <p class="mt-1 text-xs text-stone-500">Comfort first</p>
+                </a>
+
+                <a href="#bedroom" class="reveal group text-center">
+                    <div class="scroll-image overflow-hidden rounded-2xl bg-[#eee8df]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsmyGZO7gT1Yw1IAcASe-815vmH0n2yVrrGVcqPlDgtA&s=10"
+                             alt="Bedroom furniture" class="h-36 w-full object-cover transition duration-500 group-hover:scale-110 md:h-40">
+                    </div>
+                    <h3 class="mt-4 text-sm font-medium">Beds</h3>
+                    <p class="mt-1 text-xs text-stone-500">Rest in style</p>
+                </a>
+
+                <a href="#products" class="reveal group text-center">
+                    <div class="scroll-image overflow-hidden rounded-2xl bg-[#eee8df]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpA9h7ljIte-6Ao8kdlJVeZkRES-DrEemqDUGGkkUnBg&s"
+                             alt="Dining table" class="h-36 w-full object-cover transition duration-500 group-hover:scale-110 md:h-40">
+                    </div>
+                    <h3 class="mt-4 text-sm font-medium">Dining</h3>
+                    <p class="mt-1 text-xs text-stone-500">Gather together</p>
+                </a>
+
+                <a href="#products" class="reveal group text-center">
+                    <div class="scroll-image overflow-hidden rounded-2xl bg-[#eee8df]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAg7YqhOYSOXf24Skd68sx4tUwptP0YT6WuNdcdTW8cg&s=10"
+                             alt="Wooden wardrobe" class="h-36 w-full object-cover transition duration-500 group-hover:scale-110 md:h-40">
+                    </div>
+                    <h3 class="mt-4 text-sm font-medium">Storage</h3>
+                    <p class="mt-1 text-xs text-stone-500">Space simplified</p>
+                </a>
+
+                <a href="#products" class="reveal group text-center">
+                    <div class="scroll-image overflow-hidden rounded-2xl bg-[#eee8df]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtoxDEG_mF171yZIceNPEuTBDoSJ-ETVlO-rjwx8D3xQ&s=10"
+                             alt="Accent chair" class="h-36 w-full object-cover transition duration-500 group-hover:scale-110 md:h-40">
+                    </div>
+                    <h3 class="mt-4 text-sm font-medium">Chairs</h3>
+                    <p class="mt-1 text-xs text-stone-500">Little luxuries</p>
+                </a>
+
+                <a href="#products" class="reveal group text-center">
+                    <div class="scroll-image overflow-hidden rounded-2xl bg-[#eee8df]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_wkvW8vBTvn08nN4s5_YQPNyh-vif58TSwdCtxWed-Q&s=10"
+                             alt="Wooden table" class="h-36 w-full object-cover transition duration-500 group-hover:scale-110 md:h-40">
+                    </div>
+                    <h3 class="mt-4 text-sm font-medium">Tables</h3>
+                    <p class="mt-1 text-xs text-stone-500">The perfect finish</p>
+                </a>
+            </div>
+        </section>
+        <section id="products" class="bg-white px-6 py-20 md:px-10 lg:px-14">
+
+            <div class="reveal mb-10 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                    <p class="mb-3 text-xs tracking-[3px] text-stone-500">OUR SELECTION</p>
+                    <h2 class="serif text-3xl md:text-4xl">Pieces you'll love</h2>
+                    <p class="mt-3 text-sm text-stone-500">A thoughtful collection for your everyday spaces.</p>
+                </div>
+
+                <span class="rounded-full bg-[#f0e9df] px-4 py-2 text-xs text-stone-600">
+                    Bestsellers
+                </span>
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+
+                <article class="product-card reveal rounded-2xl border border-stone-100 bg-[#faf9f6] p-3">
+                    <div class="product-image relative rounded-xl">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUSsaBbN4mNpa33wy7cNd6Kp_V2EdxNlz_nc1fPcRkcQ&s"
+                             alt="Nimbus cream sofa" class="h-64 w-full rounded-xl object-cover">
+
+                        <span class="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-[10px]">
+                            BESTSELLER
+                        </span>
+                    </div>
+
+                    <div class="px-2 pb-2 pt-5">
+                        <p class="text-xs text-stone-500">Living Room</p>
+                        <h3 class="serif mt-2 text-xl">Nimbus Sofa</h3>
+                        <p class="mt-3 font-semibold">₹45,999</p>
+                        <p class="mt-2 text-xs text-amber-500">★★★★★ <span class="text-stone-500">(4.8)</span></p>
+
+                        <button onclick="addToCart(0)"
+                                class="gold-button mt-5 w-full rounded-full bg-[#705b3d] py-3 text-xs text-white">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card reveal rounded-2xl border border-stone-100 bg-[#faf9f6] p-3">
+                    <div class="product-image relative rounded-xl">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTStoE9cEEQaAR0fb-1BrHyi_JdnCTE4BTPi9eWHx5VjQ&s=10"
+                             alt="Aurora bedroom set" class="h-64 w-full rounded-xl object-cover">
+
+                        <span class="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-[10px]">
+                            NEW ARRIVAL
+                        </span>
+                    </div>
+
+                    <div class="px-2 pb-2 pt-5">
+                        <p class="text-xs text-stone-500">Bedroom</p>
+                        <h3 class="serif mt-2 text-xl">Aurora Bed</h3>
+                        <p class="mt-3 font-semibold">₹39,999</p>
+                        <p class="mt-2 text-xs text-amber-500">★★★★★ <span class="text-stone-500">(4.7)</span></p>
+
+                        <button onclick="addToCart(1)"
+                                class="gold-button mt-5 w-full rounded-full bg-[#705b3d] py-3 text-xs text-white">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card reveal rounded-2xl border border-stone-100 bg-[#faf9f6] p-3">
+                    <div class="product-image relative rounded-xl">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf7yrRbLuDR2Ga-6Ljrwk8glGgkfvW_Ufq0hSsYF-_4A&s=10"
+                             alt="Oak dining table" class="h-64 w-full rounded-xl object-cover">
+                    </div>
+
+                    <div class="px-2 pb-2 pt-5">
+                        <p class="text-xs text-stone-500">Dining</p>
+                        <h3 class="serif mt-2 text-xl">Oak Dining Set</h3>
+                        <p class="mt-3 font-semibold">₹28,999</p>
+                        <p class="mt-2 text-xs text-amber-500">★★★★★ <span class="text-stone-500">(4.6)</span></p>
+
+                        <button onclick="addToCart(2)"
+                                class="gold-button mt-5 w-full rounded-full bg-[#705b3d] py-3 text-xs text-white">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card reveal rounded-2xl border border-stone-100 bg-[#faf9f6] p-3">
+                    <div class="product-image relative rounded-xl">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRwAVcYm-75vMJTduyvOwdpcqZKHp9CBxd1-UslG6dZQ&s=10"
+                             alt="Maple wooden storage" class="h-64 w-full rounded-xl object-cover">
+                    </div>
+
+                    <div class="px-2 pb-2 pt-5">
+                        <p class="text-xs text-stone-500">Storage</p>
+                        <h3 class="serif mt-2 text-xl">Maple Cabinet</h3>
+                        <p class="mt-3 font-semibold">₹32,999</p>
+                        <p class="mt-2 text-xs text-amber-500">★★★★★ <span class="text-stone-500">(4.5)</span></p>
+
+                        <button onclick="addToCart(3)"
+                                class="gold-button mt-5 w-full rounded-full bg-[#705b3d] py-3 text-xs text-white">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <p id="cart-message" class="mt-7 text-center text-sm text-stone-600"></p>
+        </section>
+        <section id="collections" class="grid gap-6 px-6 py-16 md:grid-cols-2 md:px-10 lg:px-14">
+
+            <div class="reveal relative flex min-h-[330px] items-center overflow-hidden rounded-2xl bg-[#e9d8c3] p-7 md:p-10">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUSsaBbN4mNpa33wy7cNd6Kp_V2EdxNlz_nc1fPcRkcQ&s"
+                     alt="Elegant accent chair" class="absolute inset-0 h-full w-full object-cover">
+
+                <div class="absolute inset-0 bg-gradient-to-r from-[#e8d7c2] via-[#e8d7c2]/90 to-transparent"></div>
+
+                <div class="relative z-10 max-w-xs">
+                    <p class="text-xs tracking-[3px] text-stone-600">THE COMFORT EDIT</p>
+                    <h2 class="serif mt-5 text-4xl">Make room for beautiful.</h2>
+                    <p class="mt-4 text-sm leading-6 text-stone-600">
+                        Natural textures and timeless silhouettes for your home.
+                    </p>
+
+                    <a href="#products" class="gold-button mt-7 inline-block rounded-full bg-[#705b3d] px-6 py-3 text-xs text-white">
+                        Explore Collection →
+                    </a>
+                </div>
+            </div>
+
+            <div id="bedroom" class="reveal relative flex min-h-[330px] items-center overflow-hidden rounded-2xl bg-[#c8cbbd] p-7 md:p-10">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2LSwmsZMddIIEg2ZKQe1yXOwUfUstnbizy6-Olodbeg&s"
+                     alt="Calm contemporary bedroom" class="absolute inset-0 h-full w-full object-cover">
+
+                <div class="absolute inset-0 bg-gradient-to-r from-[#d5d7cb] via-[#d5d7cb]/90 to-transparent"></div>
+
+                <div class="relative z-10 max-w-xs">
+                    <p class="text-xs tracking-[3px] text-stone-600">SLOW LIVING</p>
+                    <h2 class="serif mt-5 text-4xl">Your own peaceful retreat.</h2>
+                    <p class="mt-4 text-sm leading-6 text-stone-600">
+                        Create a softer, calmer place to begin and end your day.
+                    </p>
+
+                    <a href="#products" class="gold-button mt-7 inline-block rounded-full bg-[#626957] px-6 py-3 text-xs text-white">
+                        Shop Bedroom →
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="reveal bg-[#f0e9df] px-6 py-20 text-center md:px-10">
+
+            <p class="text-xs tracking-[4px] text-stone-500">THE LUXEHOME PHILOSOPHY</p>
+
+            <h2 class="serif mx-auto mt-5 max-w-3xl text-4xl leading-tight md:text-5xl">
+                Less clutter. More character. A home that feels like you.
+            </h2>
+
+            <p class="mx-auto mt-6 max-w-2xl text-sm leading-7 text-stone-600">
+                We believe the best furniture does more than fill a room. It creates a feeling. Our design approach combines warm materials, considered details and practical comfort to make your space feel personal.
+            </p>
+
+            <a href="#categories" class="mt-8 inline-block border-b border-stone-500 pb-2 text-sm">
+                Discover our approach →
+            </a>
+        </section>
+        <section class="bg-white px-6 py-16 md:px-10 lg:px-14">
+
+            <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-center">
+
+                <div>
+                    <p class="text-xs tracking-[3px] text-stone-500">A LITTLE INSPIRATION</p>
+                    <h2 class="serif mt-3 text-3xl">Make yourself at home.</h2>
+                    <p class="mt-3 text-sm text-stone-500">
+                        Get new arrivals, styling tips and thoughtful offers.
+                    </p>
+                </div>
+
+                <form id="newsletter-form" class="flex w-full max-w-lg gap-2" onsubmit="subscribe(); return false;">
+                    <input id="email" type="email" required
+                           placeholder="Your email address"
+                           class="min-w-0 flex-1 rounded-full border border-stone-300 bg-[#faf8f4] px-5 py-4 text-sm outline-none focus:border-stone-500">
+
+                    <button type="submit" class="gold-button rounded-full bg-[#705b3d] px-6 py-4 text-sm text-white">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <p id="newsletter-message" class="mt-4 text-sm text-stone-600"></p>
+        </section>
+        <footer class="border-t border-stone-200 bg-[#f7f4ee] px-6 py-10 md:px-10 lg:px-14">
+
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+                <div>
+                    <h2 class="serif text-3xl">LuxeHome</h2>
+                    <p class="mt-4 max-w-xs text-sm leading-6 text-stone-500">
+                        Timeless furniture for thoughtful living. Designed to make home feel extraordinary.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold">Explore</h3>
+                    <div class="mt-4 space-y-3 text-sm text-stone-500">
+                        <p><a href="#categories">Categories</a></p>
+                        <p><a href="#products">Bestsellers</a></p>
+                        <p><a href="#collections">Collections</a></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold">Customer Care</h3>
+                    <div class="mt-4 space-y-3 text-sm text-stone-500">
+                        <p>Shipping Information</p>
+                        <p>Returns & Exchanges</p>
+                        <p>Contact Us</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold">Visit Our World</h3>
+                    <p class="mt-4 text-sm leading-6 text-stone-500">
+                        Inspiration for slower mornings, meaningful moments and comfortable living.
+                    </p>
+                    <div class="mt-5 flex gap-4 text-sm">
+                        <a href="#about">Instagram</a>
+                        <a href="#about">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 flex flex-col justify-between gap-3 border-t border-stone-200 pt-6 text-xs text-stone-500 sm:flex-row">
+                <p>© 2026 LuxeHome. All rights reserved.</p>
+                <p>Made for the art of living well.</p>
+            </div>
+        </footer>
+
+    </main>
+    <script>
+        var cart = 0;
+
+        function addToCart(id) {
+            cart = cart + 1;
+            document.getElementById("cart-message").innerHTML ="Item added to cart. Total items: " + cart;
+        }
+
+        function subscribe() {
+            var email = document.getElementById("email").value;
+            document.getElementById("newsletter-message").innerHTML ="Thank you for subscribing: " + email;
+        }
+    </script>
+
+</body>
+</html>
